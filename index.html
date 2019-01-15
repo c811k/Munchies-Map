@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" type="text/css" href="assets/css/reset/reset.css">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+        crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+        crossorigin="anonymous"></script>
+
+    <style></style>
+
+    <style>
+        #map {
+            margin-top:10px;
+            height: 630px;
+            /* The height is 400 pixels */
+            width: 100%;
+            /* The width is the width of the web page */
+            /* overflow: show; */
+        }
+        #nav {
+            background:aquamarine;
+            
+        }
+        #brand-title {
+            color: red !important;
+        }
+        #munchies-logo {
+            height: 55px;
+            width: 120px;
+            width: 140px;
+            height: 40px;
+        }
+    </style>
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!-- Image and text -->
+    <nav class="navbar navbar-light bg-light">
+        <a class="navbar-brand">
+            <img src="assets/images/logomunchcies.png" id="munchies-logo">
+        </a>
+        <form class="form-inline">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        </form>
+
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Log In</button>
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Sign Up</button>
+    </nav>
+
+
+
+    <div class="container2">
+        <div id="map" style="overflow: visible !important;"></div>
+    </div>
+
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQHurErpXDh3Y89jvtzzv_O_3tYyoeptI&callback=initMap"
+        type="text/javascript"></script>
+
+    <script>
+        // var uluru = { lat: 34.053345, lng: -118.496475 };
+        // var uluru2 = { lat: 34.0522222, lng: -118.2427778 };
+        var map;
+        var marker;
+
+        function initMap() {
+            // The location of Uluru
+
+            // The map, centered at Uluru
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: { lat: 34.052235, lng: -118.243683 },
+                zoom: 14,
+                position: google.maps.ControlPosition.TOP_CENTER
+            });
+            infoWindow = new google.maps.InfoWindow;
+
+            // Try HTML5 geolocation.
+            if (navigator.geolocation) {
+
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    var pos = {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude,
+                        position: google.maps.ControlPosition.TOP_CENTER
+                    };
+                    infoWindow.setPosition(pos);
+                    infoWindow.setContent('<h1>You are here</h1>');
+                    infoWindow.open(map);
+                    map.setCenter(pos);
+                }
+                );
+            } else {
+                // Browser doesn't support Geolocation
+
+                handleLocationError(false, infoWindow, map.getCenter());
+            }
+            // The marker, positioned at Uluru
+            //This is the way you can have markers show in the correct place on the map
+            // marker = new google.maps.Marker({ position: uluru, map: map });
+            // var marker2 = new google.maps.Marker({ position: uluru2, map: map });
+            var markers = [];
+            var infoWindows = [];
+        }
+    </script>
+</body>
+
+</html>
