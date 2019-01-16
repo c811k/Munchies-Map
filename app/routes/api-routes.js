@@ -8,7 +8,7 @@ module.exports = function(app) {
   app.get("/api/vendors/", function(req, res) {
  
     db.Vendor.findAll({
-        WHERE:{satuts : true}
+        WHERE:{status : true}
     })
       .then(function(data) {
         res.json(data);
