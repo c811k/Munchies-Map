@@ -1,4 +1,4 @@
-module.exports = function(sequelize, DataTypes) {
+module.exports = function (sequelize, DataTypes) {
     var Vendor = sequelize.define("Vendor", {
         owner_name: {
             type: DataTypes.STRING,
@@ -18,8 +18,23 @@ module.exports = function(sequelize, DataTypes) {
         status: {
             type: DataTypes.BOOLEAN,
             defaultValue: false
+        },
+        email: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                len: [1, 150]
+            }
+        },
+        Password: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                len: [1, 150]
+            }
         }
+
     });
-    
+
     return Vendor;
 }
