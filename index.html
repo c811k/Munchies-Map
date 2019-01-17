@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" type="text/css" href="assets/css/reset/reset.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+        crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+        crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+        crossorigin="anonymous"></script>
+
+
+    <style>
+        @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #fafafa;
+}
+
+p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1em;
+  font-weight: 300;
+  line-height: 1.7em;
+  color: #999;
+}
+
+a,
+a:hover,
+a:focus {
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.navbar {
+  padding: 15px 10px;
+  background: #fff;
+  border: none;
+  border-radius: 0;
+  margin-bottom: 40px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-btn {
+  box-shadow: none;
+  outline: none !important;
+  border: none;
+}
+
+.line {
+  width: 100%;
+  height: 1px;
+  border-bottom: 1px dashed #ddd;
+  margin: 40px 0;
+}
+
+
+/* ---------------------------------------------------
+    SIDEBAR STYLE
+----------------------------------------------------- */
+
+.wrapper {
+  display: flex;
+  align-items: stretch;
+}
+
+#sidebar {
+  min-width: 250px;
+  max-width: 250px;
+  background: #7386D5;
+  color: #fff;
+  transition: all 0.3s;
+}
+
+#sidebar a,
+#sidebar a:hover,
+#sidebar a:focus {
+  color: inherit;
+}
+
+#sidebar.active {
+  margin-left: -250px;
+}
+
+#sidebar .sidebar-header {
+  padding: 20px;
+  background: #6d7fcc;
+}
+
+#sidebar ul.components {
+  padding: 20px 0;
+  border-bottom: 1px solid #47748b;
+}
+
+#sidebar ul p {
+  color: #fff;
+  padding: 10px;
+}
+
+#sidebar ul li a {
+  padding: 10px;
+  font-size: 1.1em;
+  display: block;
+}
+
+#sidebar ul li a:hover {
+  color: #7386D5;
+  background: #fff;
+}
+
+#sidebar ul li.active > a,
+a[aria-expanded="true"] {
+  color: #fff;
+  background: #6d7fcc;
+}
+
+a[data-toggle="collapse"] {
+  position: relative;
+}
+
+a[aria-expanded="false"]::before,
+a[aria-expanded="true"]::before {
+  content: '\e259';
+  display: block;
+  position: absolute;
+  right: 20px;
+  font-family: 'Glyphicons Halflings';
+  font-size: 0.6em;
+}
+
+a[aria-expanded="true"]::before {
+  content: '\e260';
+}
+
+ul ul a {
+  font-size: 0.9em !important;
+  padding-left: 30px !important;
+  background: #6d7fcc;
+}
+
+ul.CTAs {
+  padding: 20px;
+}
+
+ul.CTAs a {
+  text-align: center;
+  font-size: 0.9em !important;
+  display: block;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+a.download {
+  background: #fff;
+  color: #7386D5;
+}
+
+a.article,
+a.article:hover {
+  background: #6d7fcc !important;
+  color: #fff !important;
+}
+
+
+/* ---------------------------------------------------
+    CONTENT STYLE
+----------------------------------------------------- */
+
+#content {
+  padding: 20px;
+  min-height: 100vh;
+  transition: all 0.3s;
+}
+
+/* #content p a {
+  color:
+} */
+
+
+/* ---------------------------------------------------
+    MEDIAQUERIES
+----------------------------------------------------- */
+
+@media (max-width: 768px) {
+  #sidebar {
+    margin-left: -250px;
+  }
+  #sidebar.active {
+    margin-left: 0;
+  }
+  #sidebarCollapse span {
+    display: none;
+  }
+}
+    </style>
+
+    <style>
+        #map {
+            height: 630px;
+            /* The height is 400 pixels */
+            width: 100%;
+            /* The width is the width of the web page */
+            /* overflow: show; */
+            z-index: -1;
+            position: absolute;
+        }
+        nav {
+            background:#4FDDB0;
+            
+        }
+        #brand-title {
+            color: red !important;
+        }
+        #munchies-logo {
+            height: 55px;
+            width: 120px;
+            width: 140px;
+            height: 40px;
+        }
+        #search-form {
+            justify-content: center;
+        }
+        #login-signup {
+            justify-content: flex-end;
+        }
+        .container2 {
+            position: relative;
+            height: 630px;
+        }
+        #sidebar {
+            position: absolute;
+            background:#4FDDB0;
+            top: 60px;
+        }
+        footer {
+            margin-top: 20px;
+            bottom: 0;
+        }
+        .navbar {
+            margin-bottom: 0px;
+        }
+        #sidebar ul li.active > a, a[aria-expanded="true"] {
+        color: #fff;
+        background: #4FDDB0;
+        }
+
+        #sidebar .sidebar-header {
+            padding: 20px;
+            background: #4FDDB0;
+        }
+        .btn-info {
+            background: #4FDDB0;
+        }
+    </style>
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!-- Image and text -->
+    <nav class="navbar navbar-light bg-light">
+        <a class="navbar-brand">
+            <img src="assets/images/logomunchcies.png" id="munchies-logo">
+        </a>
+        <form class="form-inline" id="search-form">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        </form>
+        <form class="form-inline" id="login-signup">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Log In</button>
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Sign Up</button>
+        </form>
+    </nav>
+
+
+
+
+    <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
+        <i class="glyphicon glyphicon-align-left"></i>
+        <span>>></span>
+    </button>
+
+
+    <div class="container2">
+
+        <nav id="sidebar">
+            <!-- <div class="sidebar-header">
+                <h3>Bootstrap Sidebar</h3>
+            </div> -->
+
+            <ul class="list-unstyled">
+
+                <li>
+                    <a href="#">
+                        <p>Tacos For All</p>
+                    </a>
+                    <!-- <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Home</a>
+                    <ul class="collapse list-unstyled" id="homeSubmenu">
+                        <li><a href="#">Home 1</a></li>
+                        <li><a href="#">Home 2</a></li>
+                        <li><a href="#">Home 3</a></li>
+                    </ul> -->
+                </li>
+                <li>
+                    <a href="#">
+                        <p>Hot Dog's</p>
+                    </a>
+                        <!-- <a href="#">About</a>
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Pages</a>
+                    <ul class="collapse list-unstyled" id="pageSubmenu">
+                        <li><a href="#">Page 1</a></li>
+                        <li><a href="#">Page 2</a></li>
+                        <li><a href="#">Page 3</a></li>
+                    </ul> -->
+                </li>
+                <li>
+                    <a href="#"><p>Tacos Tacos</p></a>
+                </li>
+                <li>
+                    <a href="#"><p>Street Tacos</p></a>
+                </li>
+            </ul>
+        </nav>
+
+        <div id="map" style="overflow: visible !important;">
+        </div>
+    </div>
+
+    <!-- footer starts -->
+    <!-- Footer -->
+    <footer class="page-footer font-small blue pt-4">
+
+        <!-- Footer Links -->
+        <div class="container-fluid text-center text-md-left">
+
+            <!-- Grid row -->
+            <div class="row">
+
+                <!-- Grid column -->
+                <div class="col-md-6 mt-md-0 mt-3">
+
+                    <!-- Content -->
+                    <h5 class="text-uppercase">Footer Content</h5>
+                    <p>Here you can use rows and columns here to organize your footer content.</p>
+
+                </div>
+                <!-- Grid column -->
+
+                <hr class="clearfix w-100 d-md-none pb-3">
+
+                <!-- Grid column -->
+                <div class="col-md-3 mb-md-0 mb-3">
+
+                    <!-- Links -->
+                    <h5 class="text-uppercase">MUNCHIES</h5>
+
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="#!">About Us</a>
+                        </li>
+                    </ul>
+
+                </div>
+                <!-- Grid column -->
+
+                <!-- Grid column -->
+                <div class="col-md-3 mb-md-0 mb-3">
+
+                    <!-- Links -->
+                    <h5 class="text-uppercase">Customer Care</h5>
+
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="#!">Contact Us</a>
+                        </li>
+                    </ul>
+
+                </div>
+                <!-- Grid column -->
+
+            </div>
+            <!-- Grid row -->
+
+        </div>
+        <!-- Footer Links -->
+
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3">© 2019 Copyright:
+            <a href="https://mdbootstrap.com/education/bootstrap/"> MUNCHIES</a>
+        </div>
+        <!-- Copyright -->
+
+    </footer>
+    <!-- Footer ends -->
+
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQHurErpXDh3Y89jvtzzv_O_3tYyoeptI&callback=initMap"
+        type="text/javascript"></script>
+
+    <script>
+
+        $(document).ready(function () {
+            $("#sidebarCollapse").on("click", function () {
+                $("#sidebar").toggleClass("active");
+                $(this).toggleClass("active");
+            });
+        });
+
+        // var uluru = { lat: 34.053345, lng: -118.496475 };
+        // var uluru2 = { lat: 34.0522222, lng: -118.2427778 };
+        var map;
+        var marker;
+
+        function initMap() {
+            // The location of Uluru
+
+            // The map, centered at Uluru
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: { lat: 34.052235, lng: -118.243683 },
+                zoom: 14,
+                position: google.maps.ControlPosition.TOP_CENTER
+            });
+            infoWindow = new google.maps.InfoWindow;
+
+            // Try HTML5 geolocation.
+            if (navigator.geolocation) {
+
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    var pos = {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude,
+                        position: google.maps.ControlPosition.TOP_CENTER
+                    };
+                    infoWindow.setPosition(pos);
+                    infoWindow.setContent('<h1>You are here</h1>');
+                    infoWindow.open(map);
+                    map.setCenter(pos);
+                }
+                );
+            } else {
+                // Browser doesn't support Geolocation
+
+                handleLocationError(false, infoWindow, map.getCenter());
+            }
+            // The marker, positioned at Uluru
+            //This is the way you can have markers show in the correct place on the map
+            // marker = new google.maps.Marker({ position: uluru, map: map });
+            // var marker2 = new google.maps.Marker({ position: uluru2, map: map });
+            var markers = [];
+            var infoWindows = [];
+        }
+    </script>
+</body>
+
+</html>
