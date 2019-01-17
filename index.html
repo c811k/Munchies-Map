@@ -45,7 +45,7 @@ a:focus {
   background: #fff;
   border: none;
   border-radius: 0;
-  margin-bottom: 40px;
+  /* margin-bottom: 40px; */
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
 }
 
@@ -209,7 +209,7 @@ a.article:hover {
             width: 100%;
             /* The width is the width of the web page */
             /* overflow: show; */
-            z-index: -1;
+            z-index: 1;
             position: absolute;
         }
         nav {
@@ -233,12 +233,14 @@ a.article:hover {
         }
         .container2 {
             position: relative;
-            height: 630px;
+            height: 600px;
+            z-index: 5;
         }
         #sidebar {
             position: absolute;
             background:#4FDDB0;
-            top: 60px;
+            top: 96px;
+            z-index: 4;
         }
         footer {
             margin-top: 20px;
@@ -250,20 +252,36 @@ a.article:hover {
         #sidebar ul li.active > a, a[aria-expanded="true"] {
         color: #fff;
         background: #4FDDB0;
+        z-index: 4;
         }
 
         #sidebar .sidebar-header {
             padding: 20px;
             background: #4FDDB0;
+            z-index: 4;
         }
         .btn-info {
             background: #4FDDB0;
         }
+        #sidebarCollapse {
+            float: left;
+            margin-top: 60px;
+            z-index: 4;
+        }
+        #logo{ margin-top: -5px;
+           float: left;
+           width: 25%;
+           height:25%;
+       }
+
+
     </style>
     <title>Document</title>
 </head>
 
 <body>
+
+
 
     <!-- Image and text -->
     <nav class="navbar navbar-light bg-light">
@@ -280,18 +298,19 @@ a.article:hover {
         </form>
     </nav>
 
-
-
-
-    <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
-        <i class="glyphicon glyphicon-align-left"></i>
-        <span>>></span>
-    </button>
+    <div id="map" style="overflow: visible !important;">
+    </div>
 
 
     <div class="container2">
 
+        <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
+            <i class="glyphicon glyphicon-align-left"></i>
+            <span>>></span>
+        </button>
+
         <nav id="sidebar">
+
             <!-- <div class="sidebar-header">
                 <h3>Bootstrap Sidebar</h3>
             </div> -->
@@ -299,7 +318,9 @@ a.article:hover {
             <ul class="list-unstyled">
 
                 <li>
+
                     <a href="#">
+                        <img src="assets/images/businesslogo.png" alt="logo" id="logo">
                         <p>Tacos For All</p>
                     </a>
                     <!-- <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Home</a>
@@ -311,9 +332,10 @@ a.article:hover {
                 </li>
                 <li>
                     <a href="#">
+                        <img src="assets/images/businesslogo.png" alt="logo" id="logo">
                         <p>Hot Dog's</p>
                     </a>
-                        <!-- <a href="#">About</a>
+                    <!-- <a href="#">About</a>
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Pages</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
                         <li><a href="#">Page 1</a></li>
@@ -322,16 +344,21 @@ a.article:hover {
                     </ul> -->
                 </li>
                 <li>
-                    <a href="#"><p>Tacos Tacos</p></a>
+                    <a href="#">
+                        <img src="assets/images/businesslogo.png" alt="logo" id="logo">
+                        <p>Tacos Tacos</p>
+                    </a>
                 </li>
                 <li>
-                    <a href="#"><p>Street Tacos</p></a>
+                    <a href="#">
+                        <img src="assets/images/businesslogo.png" alt="logo" id="logo">
+                        <p>Street Tacos</p>
+                    </a>
                 </li>
             </ul>
         </nav>
 
-        <div id="map" style="overflow: visible !important;">
-        </div>
+
     </div>
 
     <!-- footer starts -->
@@ -386,6 +413,20 @@ a.article:hover {
                 </div>
                 <!-- Grid column -->
 
+                <div class="col-md-3 mb-md-0 mb-3">
+
+                    <!-- Links -->
+                    <h5 class="text-uppercase">Customer Care</h5>
+
+                    <ul class="list-unstyled">
+                        <li>
+                            <button id="loc1">location</button>
+                        </li>
+                    </ul>
+
+                </div>
+                <!-- Grid column -->
+
             </div>
             <!-- Grid row -->
 
@@ -404,17 +445,38 @@ a.article:hover {
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQHurErpXDh3Y89jvtzzv_O_3tYyoeptI&callback=initMap"
         type="text/javascript"></script>
 
+    <script src="https://cdn.klokantech.com/maptilerlayer/v1/index.js"></script>
+
     <script>
+
 
         $(document).ready(function () {
             $("#sidebarCollapse").on("click", function () {
                 $("#sidebar").toggleClass("active");
                 $(this).toggleClass("active");
             });
+
+            $("#loc1").on("click", function () {
+                if (navigator.geolocation) {
+
+                    navigator.geolocation.getCurrentPosition(function (position) {
+                        var pos = {
+                            lat: position.coords.latitude,
+                            lng: position.coords.longitude,
+                            position: google.maps.ControlPosition.TOP_CENTER
+                        };
+                        infoWindow.setPosition(pos);
+                        infoWindow.setContent('<h1>You are here</h1>');
+                        infoWindow.open(map);
+                        map.setCenter(pos);
+                    }
+                    );
+                }
+            })
         });
 
-        // var uluru = { lat: 34.053345, lng: -118.496475 };
-        // var uluru2 = { lat: 34.0522222, lng: -118.2427778 };
+        var uluru = { lat: 34.053345, lng: -118.496475 };
+        var uluru2 = { lat: 34.0522222, lng: -118.2427778 };
         var map;
         var marker;
 
@@ -453,9 +515,24 @@ a.article:hover {
             //This is the way you can have markers show in the correct place on the map
             // marker = new google.maps.Marker({ position: uluru, map: map });
             // var marker2 = new google.maps.Marker({ position: uluru2, map: map });
+
+            var marker = new google.maps.Marker({
+                position: uluru,
+                map: map,
+                title: 'Hello World!'
+            });
+
+            var marker2 = new google.maps.Marker({
+                position: uluru2,
+                map: map,
+                title: 'Hello World!'
+            });
+
             var markers = [];
             var infoWindows = [];
         }
+
+        //var geoloccontrol = new klokantech.GeolocationControl(map, 14);
     </script>
 </body>
 
