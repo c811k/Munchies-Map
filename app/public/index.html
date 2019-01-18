@@ -16,8 +16,9 @@
         crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
         crossorigin="anonymous"></script>
-    
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+        crossorigin="anonymous">
 
 
 
@@ -296,19 +297,20 @@ a.article:hover {
             <div class="form-inline input-group">
                 <div class="input-group-prepend">
                     <div class="input-group-prepend">
-                        <button id="search" class="btn btn-outline-success border border-right-0" type="button"><i class="fas fa-search"></i></button>
+                        <button id="search-button" class="btn btn-outline-success border border-right-0" type="button"><i
+                                class="fas fa-search"></i></button>
                     </div>
                 </div>
-                <input class="form-control bg-light border border-right-0" type="text" placeholder="Search">
+                <input class="form-control bg-light border border-right-0" type="text" placeholder="Search" id="search-box">
                 <div class="input-group-append">
                     <button id="loc1" class="btn btn-outline-success border" type="button"><i class="fas fa-map-marker-alt"></i></button>
                 </div>
-            </div>   
+            </div>
         </form>
         <form class="form-inline" id="login-signup">
             <div class="input-group">
-                    <button class="btn btn-outline-success border-0 my-2 mx-1 my-sm-0" type="submit">LOG IN</button>
-                    <a href="signup.html" class="btn btn-outline-success border-0 my-2 mx-1 my-sm-0" role="button">SIGN UP</a>
+                <button class="btn btn-outline-success border-0 my-2 mx-1 my-sm-0" type="submit">LOG IN</button>
+                <a href="signup.html" class="btn btn-outline-success border-0 my-2 mx-1 my-sm-0" role="button">SIGN UP</a>
             </div>
         </form>
     </nav>
@@ -464,7 +466,7 @@ a.article:hover {
 
     <script>
 
-
+        var searchVal;
         $(document).ready(function () {
             $("#sidebarCollapse").on("click", function () {
                 $("#sidebar").toggleClass("active");
@@ -545,8 +547,13 @@ a.article:hover {
 
             var markers = [];
             var infoWindows = [];
-        }
 
+
+        }
+        $("#search-button").on("click", function () {
+            searchVal = $("#search-box").val();
+            console.log(searchVal);
+        })
         //var geoloccontrol = new klokantech.GeolocationControl(map, 14);
     </script>
 </body>
