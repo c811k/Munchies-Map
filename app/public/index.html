@@ -235,6 +235,7 @@ a.article:hover {
             position: relative;
             height: 600px;
             z-index: 5;
+            display: inline-block;
         }
         #sidebar {
             position: absolute;
@@ -289,8 +290,8 @@ a.article:hover {
             <img src="assets/images/logomunchcies.png" id="munchies-logo">
         </a>
         <form class="form-inline" id="search-form">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="search-box">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="search-button">Search</button>
         </form>
         <form class="form-inline" id="login-signup">
             <button class="btn btn-outline-success my-2 mx-1 my-sm-0" type="submit">Log In</button>
@@ -445,16 +446,19 @@ a.article:hover {
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQHurErpXDh3Y89jvtzzv_O_3tYyoeptI&callback=initMap"
         type="text/javascript"></script>
 
-    <script src="https://cdn.klokantech.com/maptilerlayer/v1/index.js"></script>
+    <!-- <script src="https://cdn.klokantech.com/maptilerlayer/v1/index.js"></script> -->
 
     <script>
 
-
+        var searchVal;
         $(document).ready(function () {
             $("#sidebarCollapse").on("click", function () {
                 $("#sidebar").toggleClass("active");
                 $(this).toggleClass("active");
             });
+
+
+
 
             $("#loc1").on("click", function () {
                 if (navigator.geolocation) {
@@ -495,12 +499,14 @@ a.article:hover {
             if (navigator.geolocation) {
 
                 navigator.geolocation.getCurrentPosition(function (position) {
+
                     var pos = {
                         lat: position.coords.latitude,
                         lng: position.coords.longitude,
                         position: google.maps.ControlPosition.TOP_CENTER
                     };
                     infoWindow.setPosition(pos);
+                    console.log(navigator.geolocation);
                     infoWindow.setContent('<h1>You are here</h1>');
                     infoWindow.open(map);
                     map.setCenter(pos);
@@ -519,18 +525,28 @@ a.article:hover {
             var marker = new google.maps.Marker({
                 position: uluru,
                 map: map,
-                title: 'Hello World!'
+                title: 'Hello World!',
+                draggable: true
             });
 
             var marker2 = new google.maps.Marker({
                 position: uluru2,
                 map: map,
-                title: 'Hello World!'
+                title: 'Hello World!',
+                draggable: true
             });
 
             var markers = [];
             var infoWindows = [];
+
+            $("#search-button").on("click", function (event) {
+                event.preventDefault();
+                searchVal = $("#search-box").val();
+                console.log(searchVal);
+            })
+
         }
+
 
         //var geoloccontrol = new klokantech.GeolocationControl(map, 14);
     </script>
