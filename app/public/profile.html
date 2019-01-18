@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Profile | Munchies</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+</head>
+<body>
+    <nav class="navbar navbar-light bg-light">
+        <a class="navbar-brand">
+            <img src="assets/images/logomunchcies.png" id="munchies-logo">
+        </a>
+
+    <form class="navbar-form w-50" id="search-form">
+        <div class="form-inline input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-prepend">
+                    <button id="search" class="btn btn-outline-success border border-right-0" type="button"><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+            <input class="form-control bg-light border border-right-0" type="text" placeholder="Search">
+            <div class="input-group-append">
+                <button id="loc1" class="btn btn-outline-success border" type="button"><i class="fas fa-map-marker-alt"></i></button>
+            </div>
+        </div>   
+    </form>
+
+    <form class="form-inline" id="login-signup">
+            <div class="input-group">
+                <a href="./login" class="btn btn-outline-success border-0 my-2 mx-1 my-sm-0" type="submit">LOG IN</a>
+                <a href="./signup" class="btn btn-outline-success border-0 my-2 mx-1 my-sm-0" role="button">SIGN UP</a>
+            </div>
+        </form>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-3">
+                <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                    <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Profile</a>
+                    <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Menus</a>
+                    <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</a>
+                </div>
+            </div>
+            <div class="col-9">
+                <div class="tab-content" id="v-pills-tabContent">
+                    <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                        <h1>Owner Name: Caleb Kang</h1>
+                        <h3>Business Name: King Taco</h3>
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                        <button class="btn btn-outline-success">Add Menu</button>
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+</body>
+</html>
