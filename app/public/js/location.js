@@ -11,7 +11,7 @@ $(document).ready(function () {
         if (navigator.geolocation) {
 
             navigator.geolocation.getCurrentPosition(function (position) {
-                userLonLang = {
+                pos = {
                     lat: position.coords.latitude,
                     lng: position.coords.longitude,
                     position: google.maps.ControlPosition.TOP_CENTER
