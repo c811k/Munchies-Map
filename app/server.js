@@ -1,7 +1,10 @@
-// Dependencies
 var express = require("express");
+var bodyParser = require("body-parser");
+var session = require("express-session");
+var http = require('http').Server(app);
+var io = require("socket.io")(http);
+var app = require("express")();
 
-// Sets up the Express App
 var app = express();
 var PORT = process.env.PORT || 8080;
 
@@ -12,12 +15,23 @@ var db = require("./models");
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+app.use(session({
+    secret: "yolo",
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: "auto" }
+}));
+
 // Static directory
 app.use(express.static("public"));
 
+// Routes
+require("./routes/api-routes.js")(app);
+require("./routes/html-routes.js")(app);
+
 // Syncing our sequelize models and then starting our express app
-db.sequelize.sync().then(function() {
-    app.listen(PORT, function() {
+db.sequelize.sync().then(function () {
+    app.listen(PORT, function () {
         console.log("App listening on PORT " + PORT);
     });
 });

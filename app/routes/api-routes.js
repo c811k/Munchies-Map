@@ -93,4 +93,43 @@ app.get("/api/menu/:id", function(req, res) {
         res.json(data);
       });
   });
+  app.get("/",function(req,res){
+    res.sendFile(__dirname + '/index.html');
+});
+
+/*  This is auto initiated event when Client connects to Your Machien.  */
+
+io.on('connection',function(socket){  
+    console.log("A user is connected");
+    socket.on('status added',function(status){
+      add_status(status,function(res){
+        if(res){
+            io.emit('refresh feed',status);
+        } else {
+            io.emit('error');
+        }
+      });
+    });
+});
+
+var add_status = function (status,callback) {
+    db.Location.getConnection(function(err,connection){
+        if (err) {
+          callback(false);
+          return;
+        }
+        db.Location.create({
+            lang: req.body.lang,
+            linch: req.body.linch,
+            
+        })
+          .then(function(data) {
+            res.json(data);
+          });
+     connection.on('error', function(err) {
+              callback(false);
+              return;
+        });
+    });
+}
 }
