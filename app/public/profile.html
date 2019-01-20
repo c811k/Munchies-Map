@@ -59,8 +59,8 @@
 
     <form class="form-inline" id="login-signup">
             <div class="input-group">
-                <a href="./login" class="btn btn-outline-success border-0 my-2 mx-1 my-sm-0" role="button">LOG OUT</a>
-                <a href="./signup" class="btn btn-outline-success border-0 my-2 mx-1 my-sm-0" role="button">SIGN UP</a>
+                <a href="./login" class="btn btn-outline-success border-0 my-2 mx-1 my-sm-0" role="button"><i class="fas fa-user-shield"></i> LOG OUT</a>
+                <a href="./signup" class="btn btn-outline-success border-0 my-2 mx-1 my-sm-0" role="button"><i class="fas fa-user-plus"></i> SIGN UP</a>
             </div>
         </form>
     </nav>
@@ -69,19 +69,19 @@
         <div class="row mt-5">
             <div class="col-3">
                 <div class="nav flex-column nav-pills success" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                    <a class="nav-link active" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Profile</a>
-                    <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Menus</a>
-                    <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</a>
+                    <a class="nav-link active" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false"><i class="far fa-user-circle"></i>  Profile</a>
+                    <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false"><i class="fab fa-elementor"></i>  Menus</a>
+                    <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false"><i class="fas fa-cog"></i>  Settings</a>
                 </div>
             </div>
             <div class="col-9">
                 <div class="tab-content" id="v-pills-tabContent">
                     <div class="tab-pane fade show active" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-                        <div class="jumbotron">
+                        <div class="jumbotron border border-success">
                             <h1 class="display-5 mb-5">Hello, <div id="ownerName"></div></h1>
                             <h3 class="lead">Business Name: <div id="businessName"></div></h3>
                             <hr class="my-4">
-                            <div class="alert alert-danger">
+                            <div class="alert alert-light">
                                 <div class="custom-control-lg custom-switch">
                                     <input type="checkbox" class="custom-control-input" id="status">
                                     <label class="custom-control-label" for="status">ON/OFF</label>
@@ -90,14 +90,14 @@
                         </div>
                     </div>
                     <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
-                        <div class="jumbotron">
+                        <div class="jumbotron border border-success">
                             <h1 class="display-5">Menu</h1>
                             <hr class="my-4">
                             <button class="btn btn-outline-success" id="add" data-toggle="modal" data-target="#menuModal">Add Menu</button>     
                         </div>
                     </div>
                     <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
-                        <div class="jumbotron">
+                        <div class="jumbotron border border-success">
                             <h1 class="display-5">Settings</h1>
                             <hr class="my-4">
                         </div>
