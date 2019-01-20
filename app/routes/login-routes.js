@@ -3,24 +3,36 @@ var db = require("../models");
 module.exports = function (app) {
 
 
-app.get("/", function(req, res) {
+app.get("/account", function(req, res) {
     // check session first
     if (req.session.user) {
-      res.send(`welcome back, ${req.session.user.name}. are you still ${req.session.user.age} years old?`);
+      res.send(`welcome back, ${req.session.user.name}!`);
     }
     // then check cookie
     else if (req.headers.cookie.indexOf("token=") !== -1) {
       // use regex to grab cookie from headers string
       var cookie = req.headers.cookie.match(/(?<=token=)[^ ;]*/)[0];
       // compare cookie against db records
-      for (var i = 0; i < users.length; i++) {
-        if (users[i].token === cookie) {  
-          // save user object on session for back-end to continue to use
-          req.session.user = users[i];
-    
-          return res.redirect("/");
+      db.Vendor.findOne({
+        where: {
+          email: req.body.email,
+          password: req.body.password
         }
-      }
+      }).then(function(user) {
+        if(user.token === cookie) {
+          req.session.user = user;
+
+          res.end();
+        }
+      });
+      // for (var i = 0; i < users.length; i++) {
+      //   if (users[i].token === cookie) {  
+      //     // save user object on session for back-end to continue to use
+      //     req.session.user = users[i];
+    
+      //     return res.redirect("/");
+      //   }
+      // }
   
       // no match, so clear cookie
       res.clearCookie("token");
@@ -28,13 +40,8 @@ app.get("/", function(req, res) {
     }
     // if no session or cookie, send initial login form
     else {
-      res.send(`
-        <form method='POST' action='/login'>
-          <input type='text' name='username' />
-          <input type='password' name='password' /> 
-          <input type='submit' value='Submit' /> 
-        </form>
-      `);
+      res.redirect("/login");
+        
     }
   });
   
@@ -66,6 +73,7 @@ app.get("/", function(req, res) {
             }
         }).then(function(user) {
             if(user) {
+                console.log(req.body);
                 var token = "t" + Math.random();
                 user.token = token;
 
