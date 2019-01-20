@@ -19,14 +19,10 @@ $(document).ready(function() {
                 var pos = {
                     lat: position.coords.latitude,
                     lng: position.coords.longitude,
-                    position: google.maps.ControlPosition.TOP_CENTER
                 };
 
                 console.log(pos);
-                // infoWindow.setPosition(pos);
-                // infoWindow.setContent('<h1>You are here</h1>');
-                // infoWindow.open(map);
-                // map.setCenter(pos);
+                getLocation(pos);
             });
         }
     });
@@ -34,6 +30,12 @@ $(document).ready(function() {
     function submitItem(nItem) {
         $.post("/api/menu", nItem, function() {
             alert("Good Luck!");
-        })
+        });
+    }
+
+    function getLocation(pos) {
+        $.post("/api/location", pos, function() {
+            alert("You're live");
+        });
     }
 });

@@ -93,4 +93,17 @@ app.get("/api/menu/:id", function(req, res) {
         res.json(data);
       });
   });
+
+  app.post("/api/location", function(req, res) {
+    console.log(req.body);
+    db.Location.create({
+      latitude: req.body.lat,
+      longitude: req.body.lng
+      
+    })
+      .then(function(data) {
+        res.json(data);
+      });
+  });
 }
+
