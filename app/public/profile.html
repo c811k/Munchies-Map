@@ -38,7 +38,7 @@
 
 </style>
 <body>
-    <nav class="navbar navbar-light bg-light">
+    <nav class="navbar navbar-light bg-light sticky-top">
         <a class="navbar-brand">
             <img src="assets/images/logomunchcies.png" id="munchies-logo">
         </a>
@@ -78,27 +78,25 @@
                 <div class="tab-content" id="v-pills-tabContent">
                     <div class="tab-pane fade show active" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
                         <div class="jumbotron border border-success">
-                            <h1 class="display-5 mb-5">Hello, <div id="ownerName"></div></h1>
-                            <h3 class="lead">Business Name: <div id="businessName"></div></h3>
+                            <h1 class="display-5 alert alert-success">Hello, <div id="ownerName"></div></h1>
+                            <h3 class="lead alert alert-success">Business Name: <div id="businessName"></div></h3>
                             <hr class="my-4">
-                            <div class="alert alert-light">
-                                <div class="custom-control-lg custom-switch">
-                                    <input type="checkbox" class="custom-control-input" id="status">
-                                    <label class="custom-control-label" for="status">ON/OFF</label>
-                                </div>
-                            </div>        
+                            <button class="btn btn-outline-success" id="status">Share your location</button>
                         </div>
                     </div>
                     <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
                         <div class="jumbotron border border-success">
-                            <h1 class="display-5">Menu</h1>
+                            <h1 class="display-5 alert alert-success">Menu</h1>
                             <hr class="my-4">
-                            <button class="btn btn-outline-success" id="add" data-toggle="modal" data-target="#menuModal">Add Menu</button>     
+                            <div class="text-right">
+                                <button class="btn btn-outline-success" id="add" data-toggle="modal" data-target="#menuModal">Add Menu</button>     
+
+                            </div>
                         </div>
                     </div>
                     <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
                         <div class="jumbotron border border-success">
-                            <h1 class="display-5">Settings</h1>
+                            <h1 class="display-5 alert alert-success">Settings</h1>
                             <hr class="my-4">
                         </div>
                     </div>
