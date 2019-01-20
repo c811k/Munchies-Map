@@ -42,7 +42,7 @@ app.get("/api/menu/:id", function(req, res) {
   app.post("/api/menu", function(req, res) {
     console.log(req.body);
     db.Item.create({
-        item: req.body.item,
+        name: req.body.name,
         price: req.body.price,
         img: req.body.img
     })
