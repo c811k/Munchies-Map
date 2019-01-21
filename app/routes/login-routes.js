@@ -3,10 +3,10 @@ var db = require("../models");
 module.exports = function (app) {
 
 
-app.get("/account", function(req, res) {
+app.get("/login", function(req, res) {
     // check session first
     if (req.session.user) {
-      res.send(`welcome back, ${req.session.user.name}!`);
+      res.redirect("/profile");
     }
     // then check cookie
     else if (req.headers.cookie.indexOf("token=") !== -1) {
@@ -22,21 +22,13 @@ app.get("/account", function(req, res) {
         if(user.token === cookie) {
           req.session.user = user;
 
-          res.end();
+          res.redirect("/profile");
         }
       });
-      // for (var i = 0; i < users.length; i++) {
-      //   if (users[i].token === cookie) {  
-      //     // save user object on session for back-end to continue to use
-      //     req.session.user = users[i];
-    
-      //     return res.redirect("/");
-      //   }
-      // }
   
       // no match, so clear cookie
       res.clearCookie("token");
-      res.redirect("/");
+      res.redirect("/login");
     }
     // if no session or cookie, send initial login form
     else {
@@ -45,23 +37,24 @@ app.get("/account", function(req, res) {
     }
   });
   
-//   app.get("/other", function(req, res) {
-//     // only users with set session can see this route
-//     if (req.session.user) {
-//       res.send(`oh, it's ${req.session.user.name} again.`);
-//     }
-//     else {
-//       res.redirect("/");
-//     }
-//   });
+  app.get("/profile", function(req, res) {
+    // only users with set session can see this route
+    if (req.session.user) {
+      res.send(`oh, it's ${req.session.user.owner_name} again.`);
+      console.log(req.session.user);
+    }
+    else {
+      res.redirect("/");
+    }
+  });
   
-//   app.get("/logout", function(req, res) {
-//     // clear cookie and session
-//     res.clearCookie("token");
-//     req.session.destroy();
+  app.get("/logout", function(req, res) {
+    // clear cookie and session
+    res.clearCookie("token");
+    req.session.destroy();
   
-//     res.redirect("/");
-//   });
+    res.redirect("/");
+  });
   
     app.post("/login", function(req, res) {
     
@@ -80,9 +73,8 @@ app.get("/account", function(req, res) {
                 res.cookie("token", token, {expires: new Date(Date.now() + 999999999)});
                 req.session.user = user;
 
-                res.end();
-                
                 console.log("Thank you for signing in!");
+                return res.redirect("/profile");
             }
             else {
                 res.send("account not found");
