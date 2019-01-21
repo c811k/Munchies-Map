@@ -13,11 +13,7 @@ $(document).ready(function() {
             email: email.val(),
             password: password.val()
         };
-
-        console.log(newBusiness);
-
         submitProfile(newBusiness);
-
     });
 
     function submitProfile(nBusiness) {
@@ -25,7 +21,4 @@ $(document).ready(function() {
             alert("Thank you for signing up!");
         })
     }
-
-
-
 });

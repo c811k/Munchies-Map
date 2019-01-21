@@ -1,0 +1,17 @@
+a {
+    color: #28a745;
+}
+
+a:hover {
+    color: gray;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    background-color: #28a745;
+}
+
+.custom-control-input:checked~.custom-control-label::before {
+    color: #fff;
+    border-color: #28a745;
+    background-color: #28a745;
+}
