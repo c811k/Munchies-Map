@@ -27,10 +27,7 @@ app.use(session({
 require("./routes/api-routes.js")(app);
 require("./routes/html-routes.js")(app);
 require("./routes/login-routes.js")(app);
-<<<<<<< HEAD
 
-=======
->>>>>>> 2dde5c6e9c5799bce832ece361ac5629ef34b2e2
 
 
 // Syncing our sequelize models and then starting our express app
