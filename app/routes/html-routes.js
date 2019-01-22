@@ -12,18 +12,18 @@ module.exports = function(app) {
   });
 
   app.get("/login", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/login.html"));
+    res.redirect("/login.html");
   });
 
   app.get("/signup", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/signup.html"));
+    res.redirect("/signup.html");
   });
 
   app.get("/profile", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/profile.html"));
+    res.redirect("/profile.html");
   });
   app.get("/*", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/error.html"));
+    res.reidrect("/error.html");
   });
 };
 
