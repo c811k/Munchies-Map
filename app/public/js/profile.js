@@ -2,12 +2,20 @@ $(document).ready(function() {
     var itemName = $("#itemName");
     var itemPrice =$("#itemPrice");
 
+    var currentUser = JSON.parse(sessionStorage.getItem("user"));
+    console.log(currentUser);
+    if(currentUser) {
+        $("#greeting").text(`Hello ${currentUser.owner_name}`);
+        $("#business").text(`Business Name: ${currentUser.business_name}`);
+    }
+
     $("#save").on("click", function(event) {
         event.preventDefault();
 
         var newItem = {
             name: itemName.val().trim(),
-            price: itemPrice.val()
+            price: itemPrice.val(),
+            vendorId: currentUser.id
         }
         submitItem(newItem);
     });
@@ -17,8 +25,9 @@ $(document).ready(function() {
 
             navigator.geolocation.getCurrentPosition(function (position) {
                 var pos = {
-                    lat: position.coords.latitude,
-                    lng: position.coords.longitude,
+                    latitude: position.coords.latitude,
+                    longitude: position.coords.longitude,
+                    vendorId: currentUser.id
                 };
 
                 console.log(pos);
@@ -27,15 +36,15 @@ $(document).ready(function() {
         }
     });
 
-    function submitItem(nItem) {
-        $.post("/api/menu", nItem, function() {
-            alert("Good Luck!");
+    function submitItem(newItem) {
+        $.post("/api/menu", newItem, function(data) {
+            console.log(data);
         });
     }
 
     function getLocation(pos) {
-        $.post("/api/location", pos, function() {
-            alert("You're live");
+        $.post("/api/location", pos, function(data) {
+            console.log(data);
         });
     }
 });

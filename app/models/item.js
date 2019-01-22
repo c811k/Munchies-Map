@@ -10,8 +10,7 @@ module.exports = function(sequelize, DataTypes) {
         price: {
             type: DataTypes.DECIMAL(10, 2),
             allowNull: false    
-        },
-        img: DataTypes.STRING    
+        }
     });
 
     Item.associate = function(models) {

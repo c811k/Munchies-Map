@@ -2,7 +2,6 @@ var db = require("../models");
 
 module.exports = function (app) {
 
-
 app.get("/login", function(req, res) {
     // check session first
     if (req.session.user) {
@@ -40,8 +39,8 @@ app.get("/login", function(req, res) {
   app.get("/profile", function(req, res) {
     // only users with set session can see this route
     if (req.session.user) {
-      res.send(`oh, it's ${req.session.user.owner_name} again.`);
       console.log(req.session.user);
+
     }
     else {
       res.redirect("/");
@@ -72,20 +71,14 @@ app.get("/login", function(req, res) {
 
                 res.cookie("token", token, {expires: new Date(Date.now() + 999999999)});
                 req.session.user = user;
-
-                console.log("Thank you for signing in!");
-                return res.redirect("/profile");
+                let {id, owner_name, business_name} = req.session.user;
+                let copy = {id, owner_name, business_name};
+                
+                res.json(copy);
             }
             else {
-                res.send("account not found");
+                res.send(null);
             }
         });
     });
-
-  app.get("/test", function(req, res) {
-
-    console.log(req.session.user);
-    res.end();
-});
-
 }
