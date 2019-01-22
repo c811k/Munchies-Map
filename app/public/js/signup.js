@@ -19,6 +19,8 @@ $(document).ready(function() {
     function submitProfile(nBusiness) {
         $.post("/api/vendors", nBusiness, function() {
             alert("Thank you for signing up!");
-        })
+            window.location = "/";
+        });
+       
     }
 });
