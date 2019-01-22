@@ -10,14 +10,14 @@ module.exports = function(sequelize, DataTypes) {
        }
     });
     
-    // Location.associate = function(models) {
-    //     this.belongsTo(models.Vendor, {
-    //         foreignKey: {
-    //             allowNull: false,
-    //             name: "vendorId"
-    //         }
-    //     });
-    // };
+    Location.associate = function(models) {
+        this.belongsTo(models.Vendor, {
+            foreignKey: {
+                allowNull: false,
+                name: "vendorId"
+            }
+        });
+    };
 
     return Location;
 }

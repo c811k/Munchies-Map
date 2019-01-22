@@ -44,7 +44,8 @@ app.get("/api/menu/:id", function(req, res) {
     db.Item.create({
         name: req.body.name,
         price: req.body.price,
-        img: req.body.img
+        img: req.body.img,
+        vendor: req.body.vendorId
     })
       .then(function(data) {
         res.json(data);
@@ -97,9 +98,9 @@ app.get("/api/menu/:id", function(req, res) {
   app.post("/api/location", function(req, res) {
     console.log(req.body);
     db.Location.create({
-      latitude: req.body.lat,
-      longitude: req.body.lng
-      
+      latitude: req.body.latitude,
+      longitude: req.body.longitude,
+      vendorId: req.body.vendorId
     })
       .then(function(data) {
         res.json(data);
