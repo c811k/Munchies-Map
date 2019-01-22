@@ -45,7 +45,7 @@ app.get("/api/menu/:id", function(req, res) {
         name: req.body.name,
         price: req.body.price,
         img: req.body.img,
-        vendor: req.body.vendorId
+        vendorId: req.body.vendorId
     })
       .then(function(data) {
         res.json(data);
