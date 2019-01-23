@@ -1,5 +1,6 @@
 var searchVal;
-var userLonLang;
+var map;
+var infowindow;
 
 $(document).ready(function () {
     $("#sidebarCollapse").on("click", function () {
@@ -26,46 +27,59 @@ $(document).ready(function () {
     })
 });
 
-var uluru = { lat: 34.053345, lng: -118.496475 };
-var uluru2 = { lat: 34.0522222, lng: -118.2427778 };
 var map;
 var marker;
 
 function initMap() {
-    // The location of Uluru
-
-    // The map, centered at Uluru
+    
     map = new google.maps.Map(document.getElementById('map'), {
         center: { lat: 34.052235, lng: -118.243683 },
         zoom: 14,
         position: google.maps.ControlPosition.TOP_CENTER
     });
-    infoWindow = new google.maps.InfoWindow;
-
-    // Try HTML5 geolocation.
+    
     if (navigator.geolocation) {
-
         navigator.geolocation.getCurrentPosition(function (position) {
-            var pos = {
-                lat: position.coords.latitude,
-                lng: position.coords.longitude,
-                position: google.maps.ControlPosition.TOP_CENTER
-            };
-            infoWindow.setPosition(pos);
-            infoWindow.setContent('<h1>You are here</h1>');
-            infoWindow.open(map);
-            map.setCenter(pos);
-        }
-        );
+            var userPos = new google.maps.LatLng(position.coords.latitude,
+                position.coords.longitude);
+            
+            var markUsr = new google.maps.Marker({
+                position: userPos,
+                map: map
+                // icon: 'images/locblue.png'
+            });
+            $.get("/api/vendors/" , function(data) {
+                console.log(data);
+                map.setCenter(markUsr.position);
+
+                for (var i = 0; i < data.length; i++) {
+                    var pos = new google.maps.LatLng(parseFloat(data[i].Locations[0].latitude), parseFloat(data[i].Locations[0].longitude));
+
+                    var marker = new google.maps.Marker({
+                        position: pos,
+                        map: map,
+                        info: data[i].business_name
+                        // icon: 'images/locred.png',
+                        // description: data[i].desc,
+                    });
+
+                    var infowindow = new google.maps.InfoWindow({
+                        content: data[i].business_name
+                    });
+                    
+                    google.maps.event.addListener(marker, 'click', function () {
+                        infowindow.setContent(this.info);
+                        infowindow.open(map, this);
+                    });
+                    
+                }
+                
+            });
+        });
     } else {
         // Browser doesn't support Geolocation
-
         handleLocationError(false, infoWindow, map.getCenter());
     }
-    // The marker, positioned at Uluru
-    //This is the way you can have markers show in the correct place on the map
-    // marker = new google.maps.Marker({ position: uluru, map: map });
-    // var marker2 = new google.maps.Marker({ position: uluru2, map: map });
 
     var contentString = '<div id="content">' +
         '<div id="siteNotice">' +
@@ -85,38 +99,8 @@ function initMap() {
         '</div>' +
         '</div>';
 
-        var infowindow2 = new google.maps.InfoWindow({
-            content: contentString,
-            maxWidth: 200
-          });
-
-          var marker = new google.maps.Marker({
-            position: uluru,
-            map: map,
-            title: 'Uluru (Ayers Rock)'
-          });
-
-          marker.addListener('click', function() {
-            infowindow2.open(map, marker);
-          });
-
-    // var marker = new google.maps.Marker({
-    //     position: uluru,
-    //     map: map,
-    //     title: 'Hello World!'
-    // });
-
-    // var marker2 = new google.maps.Marker({
-    //     position: uluru2,
-    //     map: map,
-    //     title: 'Hello World!'
-    // });
-
-    var markers = [];
-    var infoWindows = [];
-
-
 }
+
 $("#search-button").on("click", function () {
     searchVal = $("#search-box").val();
     console.log(searchVal);
