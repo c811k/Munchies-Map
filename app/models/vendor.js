@@ -36,5 +36,15 @@ module.exports = function (sequelize, DataTypes) {
 
     });
 
+    Vendor.associate = function(models) {
+        models.Vendor.hasMany(models.Location, {
+            foreignKey: {
+                onDelete: "CASCADE",
+                allowNull: false,
+                name: "vendorId"
+            }
+        });
+    }
+
     return Vendor;
 }

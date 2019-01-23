@@ -8,6 +8,8 @@ module.exports = function(app) {
   app.get("/api/vendors/", function(req, res) {
  
     db.Vendor.findAll({
+      include: [db.Location]
+    }, {
         WHERE:{status : true}
     })
       .then(function(data) {

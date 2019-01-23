@@ -14,8 +14,9 @@ module.exports = function(sequelize, DataTypes) {
     });
 
     Item.associate = function(models) {
-        this.belongsTo(models.Vendor, {
+        models.Item.belongsTo(models.Vendor, {
             foreignKey: {
+                onDelete: "CASCADE",
                 allowNull: false,
                 name: "vendorId"
             }
