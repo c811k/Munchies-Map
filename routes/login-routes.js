@@ -62,7 +62,8 @@ app.get("/login", function(req, res) {
             where: {
                 email: req.body.email,
                 password: req.body.password
-            }
+            },
+            include: [db.Item]
         }).then(function(user) {
             if(user) {
                 console.log(req.body);
@@ -71,8 +72,8 @@ app.get("/login", function(req, res) {
 
                 res.cookie("token", token, {expires: new Date(Date.now() + 999999999)});
                 req.session.user = user;
-                let {id, owner_name, business_name, status} = req.session.user;
-                let copy = {id, owner_name, business_name, status};
+                let {id, owner_name, business_name, status } = req.session.user;
+                let copy = {id, owner_name, business_name, status };
                 
                 res.json(copy);
             }

@@ -56,8 +56,10 @@ $(document).ready(function() {
 
     function submitItem(newItem) {
         $.post("/api/menu", newItem, function(data) {
-            var nItem = $("<div>");
-            nItem.append(newItem.name)
+
+            $("#menuDisplay").append("<p>Name: " + newItem.name + "</p>");
+            $("#menuDisplay").append("<p>Price: $" + newItem.price) + "</p>";
+            $("#menuDisplay").append("<hr>");
         });
     }
 
