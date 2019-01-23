@@ -22,6 +22,11 @@ module.exports = function(app) {
   app.get("/profile", function(req, res) {
     res.redirect("/profile.html");
   });
+
+  app.get("/contact", function(req, res) {
+    res.redirect("/contact2.html");
+  });
+
   app.get("/*", function(req, res) {
     res.redirect("/error.html");
   });
