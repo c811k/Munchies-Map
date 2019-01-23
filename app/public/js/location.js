@@ -66,7 +66,7 @@ function initMap() {
                     var infowindow = new google.maps.InfoWindow({
                         content: data[i].business_name
                     });
-
+                    
                     google.maps.event.addListener(marker, 'click', function () {
                         infowindow.setContent(this.info);
                         infowindow.open(map, this);
