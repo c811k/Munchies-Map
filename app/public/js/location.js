@@ -35,18 +35,57 @@ function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
         center: { lat: 34.052235, lng: -118.243683 },
         zoom: 14,
-        position: google.maps.ControlPosition.TOP_CENTER
+        position: google.maps.ControlPosition.TOP_CENTER,
+        styles: [
+            {
+                elementType: 'geometry',
+                stylers: [{color: '#d9e2da'}]
+            },
+            {
+                featureType: 'road',
+                elementType: 'geometry',
+                stylers: [{color: '#b7e2c1'}]
+            },
+            {
+                featureType: 'road',
+                elementType: 'geometry.stroke',
+                stylers: [{color: '#c8cec9'}]
+            },
+            {
+                featureType: 'road.highway',
+                elementType: 'geometry',
+                stylers: [{color: '#80a087'}]
+            },
+            {
+                featureType: 'road.highway',
+                elementType: 'geometry.stroke',
+                stylers: [{color: '#adb5ad'}]
+            },
+            {
+                featureType: 'poi',
+                stylers: [{visibility: 'off'}]
+            }
+        ]
+       
     });
     
+
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function (position) {
+        navigator.geolocation.getCurrentPosition(function (position) {            
+            var icon = {
+                url: "/assets/images/businesslogo.png",
+                scaledSize: new google.maps.Size(50,50)
+            };
+            
+            var geocoder = new google.maps.Geocoder();
+
             var userPos = new google.maps.LatLng(position.coords.latitude,
                 position.coords.longitude);
             
             var markUsr = new google.maps.Marker({
                 position: userPos,
-                map: map
-                // icon: 'images/locblue.png'
+                map: map,
+                
             });
             $.get("/api/vendors/" , function(data) {
                 console.log(data);
@@ -58,8 +97,8 @@ function initMap() {
                     var marker = new google.maps.Marker({
                         position: pos,
                         map: map,
-                        info: data[i].business_name
-                        // icon: 'images/locred.png',
+                        info: data[i].business_name,
+                        icon: icon
                         // description: data[i].desc,
                     });
 
@@ -98,7 +137,7 @@ function initMap() {
         'Heritage Site.</p>' +
         '</div>' +
         '</div>';
-
+        
 }
 
 $("#search-button").on("click", function () {
