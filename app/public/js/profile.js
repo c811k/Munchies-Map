@@ -20,25 +20,35 @@ $(document).ready(function() {
         submitItem(newItem);
     });
 
-    $("#status").on("click", function () {
-        if (navigator.geolocation) {
+    $("#online").on("click", function () {
+        currentUser.status = true;
+        console.log(currentUser.status);
+        if(currentUser.status) {
+            if (navigator.geolocation) {
 
-            navigator.geolocation.getCurrentPosition(function (position) {
-                var pos = {
-                    latitude: position.coords.latitude,
-                    longitude: position.coords.longitude,
-                    vendorId: currentUser.id
-                };
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    var pos = {
+                        latitude: position.coords.latitude,
+                        longitude: position.coords.longitude,
+                        vendorId: currentUser.id
+                    };
+    
+                    console.log(pos);
+                    getLocation(pos);
+                });
+            }
+        }       
+    });
 
-                console.log(pos);
-                getLocation(pos);
-            });
-        }
+    $("#offline").on("click", function () {
+        currentUser.status = false;
+        console.log(currentUser.status);
     });
 
     function submitItem(newItem) {
         $.post("/api/menu", newItem, function(data) {
-            console.log(data);
+            var nItem = $("<div>");
+            nItem.append(newItem.name)
         });
     }
 

@@ -71,8 +71,8 @@ app.get("/login", function(req, res) {
 
                 res.cookie("token", token, {expires: new Date(Date.now() + 999999999)});
                 req.session.user = user;
-                let {id, owner_name, business_name} = req.session.user;
-                let copy = {id, owner_name, business_name};
+                let {id, owner_name, business_name, status} = req.session.user;
+                let copy = {id, owner_name, business_name, status};
                 
                 res.json(copy);
             }
