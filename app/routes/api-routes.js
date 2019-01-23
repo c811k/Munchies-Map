@@ -4,19 +4,32 @@ var db = require("../models");
 // =============================================================
 module.exports = function(app) {
 
-  // GET route for getting all of the posts
-  app.get("/api/vendors/", function(req, res) {
- 
-    db.Vendor.findAll({
-      where: { 
-        status: true
-    },  
-      include: [{model: db.Location}, {model: db.Item}]
-    })
-      .then(function(data) {
-        res.json(data);
-      });
-  });
+// GET route for getting all of the posts
+app.get("/api/vendors/", function(req, res) {
+
+  db.Vendor.findAll({
+    where: { 
+      status: true
+  },  
+    include: [{model: db.Location}, {model: db.Item}]
+  })
+    .then(function(data) {
+      res.json(data);
+    });
+});
+
+app.get("/api/vendors/:search", function(req, res) {
+
+  db.Vendor.findAll({
+    where: { 
+      status: true
+  },  
+    include: [{model: db.Location}, {model: db.Item, where: {name: {$like: "%" + req.params.search + "%"}}}]
+  })
+    .then(function(data) {
+      res.json(data);
+    });
+});
 
 app.get("/api/menu/:id", function(req, res) {
  

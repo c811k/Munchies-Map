@@ -66,16 +66,13 @@ function initMap() {
        
     });
     
-
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function (position) {            
             var icon = {
                 url: "/assets/images/businesslogo.png",
                 scaledSize: new google.maps.Size(50,50)
             };
-            
-            var geocoder = new google.maps.Geocoder();
-
+        
             var userPos = new google.maps.LatLng(position.coords.latitude,
                 position.coords.longitude);
             
@@ -84,6 +81,36 @@ function initMap() {
                 map: map,
                 
             });
+
+            $("#search-button").on("click", function () {
+                var searchInput = $("#search-box").val().trim();
+                searchInput = searchInput.replace(/\s+/g, "").toLowerCase();
+                console.log(searchInput);
+                
+                $.get("/api/vendors/" + searchInput, function(data) {
+                    console.log(data);
+                    map.setCenter(markUsr.position);
+
+                    for (var i = 0; i < data.length; i++) {
+                        var pos = new google.maps.LatLng(parseFloat(data[i].Locations[0].latitude), parseFloat(data[i].Locations[0].longitude));
+    
+                        var marker = new google.maps.Marker({
+                            position: pos,
+                            map: map,
+                            info: data[i].business_name,
+                            icon: icon
+                            // description: data[i].desc,
+                        });
+    
+                        infowindow = new google.maps.InfoWindow({
+                            content: data[i].business_name
+                        });                       
+                        
+                        infowindow.open(map, marker);
+                    }
+                });
+            });
+
             $.get("/api/vendors/" , function(data) {
                 console.log(data);
                 map.setCenter(markUsr.position);
@@ -107,9 +134,7 @@ function initMap() {
                         infowindow.setContent(this.info);
                         infowindow.open(map, this);
                     });
-                    
                 }
-                
             });
         });
     } else {
