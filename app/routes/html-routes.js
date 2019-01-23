@@ -23,7 +23,7 @@ module.exports = function(app) {
     res.redirect("/profile.html");
   });
   app.get("/*", function(req, res) {
-    res.reidrect("/error.html");
+    res.redirect("/error.html");
   });
 };
 
