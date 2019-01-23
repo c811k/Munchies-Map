@@ -21,6 +21,5 @@ $(document).ready(function() {
             alert("Thank you for signing up!");
             window.location = "/";
         });
-       
     }
 });
