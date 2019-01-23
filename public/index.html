@@ -5,277 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
-    
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
-        crossorigin="anonymous">
-    
-
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
-        crossorigin="anonymous">
-    <link rel="stylesheet" href="assets/css/style.css">
-
-<style>
-@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
-
-body {
-  font-family: 'Poppins', sans-serif;
-  background: #fafafa;
-}
-
-p {
-  font-family: 'Poppins', sans-serif;
-  font-size: 1.1em;
-  font-weight: 300;
-  line-height: 1.7em;
-  color: #999;
-}
-
-a,
-a:hover,
-a:focus {
-  text-decoration: none;
-  transition: all 0.3s;
-}
-
-.navbar {
-  padding: 15px 10px;
-  background: #fff;
-  border: none;
-  border-radius: 0;
-  /* margin-bottom: 40px; */
-  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-.navbar-btn {
-  box-shadow: none;
-  outline: none !important;
-  border: none;
-}
-
-.line {
-  width: 100%;
-  height: 1px;
-  border-bottom: 1px dashed #ddd;
-  margin: 40px 0;
-}
-
-
-/* ---------------------------------------------------
-    SIDEBAR STYLE
------------------------------------------------------ */
-
-.wrapper {
-  display: flex;
-  align-items: stretch;
-}
-
-#sidebar {
-  min-width: 250px;
-  max-width: 250px;
-  background: #7386D5;
-  color: #fff;
-  transition: all 0.3s;
-}
-
-#sidebar a,
-#sidebar a:hover,
-#sidebar a:focus {
-  color: inherit;
-}
-
-#sidebar.active {
-  margin-left: -250px;
-}
-
-#sidebar .sidebar-header {
-  padding: 20px;
-  background: #6d7fcc;
-}
-
-#sidebar ul.components {
-  padding: 20px 0;
-  border-bottom: 1px solid #47748b;
-}
-
-#sidebar ul p {
-  color: #fff;
-  padding: 10px;
-}
-
-#sidebar ul li a {
-  padding: 10px;
-  font-size: 1.1em;
-  display: block;
-}
-
-#sidebar ul li a:hover {
-  color: #7386D5;
-  background: #fff;
-}
-
-#sidebar ul li.active > a,
-a[aria-expanded="true"] {
-  color: #fff;
-  background: #6d7fcc;
-}
-
-a[data-toggle="collapse"] {
-  position: relative;
-}
-
-a[aria-expanded="false"]::before,
-a[aria-expanded="true"]::before {
-  content: '\e259';
-  display: block;
-  position: absolute;
-  right: 20px;
-  font-family: 'Glyphicons Halflings';
-  font-size: 0.6em;
-}
-
-a[aria-expanded="true"]::before {
-  content: '\e260';
-}
-
-ul ul a {
-  font-size: 0.9em !important;
-  padding-left: 30px !important;
-  background: #6d7fcc;
-}
-
-ul.CTAs {
-  padding: 20px;
-}
-
-ul.CTAs a {
-  text-align: center;
-  font-size: 0.9em !important;
-  display: block;
-  border-radius: 5px;
-  margin-bottom: 5px;
-}
-
-a.download {
-  background: #fff;
-  color: #7386D5;
-}
-
-a.article,
-a.article:hover {
-  background: #6d7fcc !important;
-  color: #fff !important;
-}
-
-
-/* ---------------------------------------------------
-    CONTENT STYLE
------------------------------------------------------ */
-
-#content {
-  padding: 20px;
-  min-height: 100vh;
-  transition: all 0.3s;
-}
-
-/* ---------------------------------------------------
-    MEDIAQUERIES
------------------------------------------------------ */
-
-@media (max-width: 768px) {
-  #sidebar {
-    margin-left: -250px;
-  }
-  #sidebar.active {
-    margin-left: 0;
-  }
-  #sidebarCollapse span {
-    display: none;
-  }
-}
-    </style>
-
-    <style>
-        #map {
-            height: 630px;
-            /* The height is 400 pixels */
-            width: 100%;
-            /* The width is the width of the web page */
-            /* overflow: show; */
-            z-index: 1;
-            position: absolute;
-        }
-        nav {
-            background:#4FDDB0;
-            
-        }
-        #brand-title {
-            color: red !important;
-        }
-        #munchies-logo {
-            height: 55px;
-            width: 120px;
-            width: 140px;
-            height: 40px;
-        }
-        #search-form {
-            justify-content: center;
-        }
-        #login-signup {
-            justify-content: flex-end;
-        }
-        .container2 {
-            position: relative;
-            height: 600px;
-            z-index: 5;
-            width: 1px;
-        }
-        #sidebar {
-            position: absolute;
-            background:#28a745;
-            top: 96px;
-        }
-        footer {
-            margin-top: 20px;
-            bottom: 0;
-        }
-        .navbar {
-            margin-bottom: 0px;
-        }
-        #sidebar ul li.active > a, a[aria-expanded="true"] {
-        color: #fff;
-        background: #4FDDB0;
-        z-index: 4;
-        }
-
-        #sidebar .sidebar-header {
-            padding: 20px;
-            background: #4FDDB0;
-            z-index: 4;
-        }
-        .btn-info {
-            background: #4FDDB0;
-        }
-        #sidebarCollapse {
-            float: left;
-            margin-top: 60px;
-            z-index: 4;
-        }
-        #logo{ margin-top: -5px;
-           float: left;
-           width: 25%;
-           height:25%;
-       }
-
-
-    </style>
     <title>Munchies</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body>
-    <!-- Image and text -->
     <nav class="navbar navbar-light sticky-top bg-light">
         <a class="navbar-brand" href="/">
             <img src="assets/images/logomunchcies.png" id="munchies-logo">
@@ -306,13 +43,11 @@ a.article:hover {
     <div id="map" style="overflow: visible !important;"></div>
 
     <div class="container2">
-
-        <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
-            <i class="glyphicon glyphicon-align-left"></i>
-            <span>>></span>
+        <button type="button" id="sidebarCollapse" class="btn btn-success">
+            <i class="fas fa-arrows-alt-h"></i>
         </button>
 
-        <nav id="sidebar">
+        <nav id="sidebar" class="rounded">
             <ul class="list-unstyled">
                 <li>
                     <a href="#">
@@ -320,18 +55,21 @@ a.article:hover {
                         <p>Tacos For All</p>
                     </a>
                 </li>
+                
                 <li>
                     <a href="#">
                         <img src="assets/images/businesslogo.png" alt="logo" id="logo">
-                        <p>Hot Dog's</p>
+                        <p>Hot Dogs</p>
                     </a>
                 </li>
+                
                 <li>
                     <a href="#">
                         <img src="assets/images/businesslogo.png" alt="logo" id="logo">
                         <p>Tacos Tacos</p>
                     </a>
                 </li>
+                
                 <li>
                     <a href="#">
                         <img src="assets/images/businesslogo.png" alt="logo" id="logo">
@@ -342,64 +80,10 @@ a.article:hover {
         </nav>
     </div>
 
-    <!-- Footer -->
-    <footer class="page-footer font-small blue pt-4">
-
-        <!-- Footer Links -->
-        <div class="container-fluid text-center text-md-left">
-
-            <!-- Grid row -->
-            <div class="row">
-
-                <!-- Grid column -->
-                <div class="col-md-4 mt-md-0">
-
-                    <!-- Content -->
-                    <h5 class="text-uppercase">Footer Content</h5>
-                    <p>Here you can use rows and columns here to organize your footer content.</p>
-
-                </div>
-                <!-- Grid column -->
-
-                <hr class="clearfix w-100 d-md-none pb-3">
-
-                <!-- Grid column -->
-                <div class="col-md-4 mb-md-0 text-center">
-
-                    <!-- Links -->
-                    <h5 class="text-uppercase">MUNCHIES</h5>
-
-                    <ul class="list-unstyled">
-                        <li>
-                            <a href="#!">About Us</a>
-                        </li>
-                    </ul>
-
-                </div>
-                
-                <!-- Grid column -->
-
-                <div class="col-md-4 mb-md-0 text-right">
-
-                    <!-- Links -->
-                    <h5 class="text-uppercase">Customer Care</h5>
-
-                    <ul class="list-unstyled">
-                        <li>
-                            <button id="loc1">location</button>
-                        </li>
-                    </ul>
-
-                </div>
-                <!-- Grid column -->
-
-            </div>
-            <!-- Grid row -->
-        </div>
-        <!-- Copyright -->
-        <div class="mt-5 mb-3 text muted text-center"><a href="/">Munchies</a> &copy; 2019</div>
+    <footer class="footer">
+            <div class="text-muted text-center"><a href="/">Munchies</a> &copy; 2019</div>
     </footer>
-    <!-- Footer ends -->
+    
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
