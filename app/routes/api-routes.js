@@ -9,7 +9,7 @@ module.exports = function(app) {
  
     db.Vendor.findAll({
       where: { 
-        status: false
+        status: true
     },  
       include: [db.Location]
     })
@@ -56,8 +56,9 @@ app.get("/api/menu/:id", function(req, res) {
   });
 
   app.put("/api/vendors", function(req, res) {
-    db.Vendor.update(req.body,
-      {
+    db.Vendor.update({
+      status: req.body.status
+    }, {
         where: {
           id: req.body.id
         }

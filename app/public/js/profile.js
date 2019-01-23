@@ -22,7 +22,11 @@ $(document).ready(function() {
 
     $("#online").on("click", function () {
         currentUser.status = true;
-        console.log(currentUser.status);
+        $.ajax({
+            method: "PUT",
+            url: "/api/vendors",
+            data: currentUser
+        });
         if(currentUser.status) {
             if (navigator.geolocation) {
 
@@ -42,7 +46,12 @@ $(document).ready(function() {
 
     $("#offline").on("click", function () {
         currentUser.status = false;
-        console.log(currentUser.status);
+        $.ajax({
+            method: "PUT",
+            url: "/api/vendors",
+            data: currentUser
+        });
+       
     });
 
     function submitItem(newItem) {
