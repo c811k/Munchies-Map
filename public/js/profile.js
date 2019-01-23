@@ -41,7 +41,8 @@ $(document).ready(function() {
                     getLocation(pos);
                 });
             }
-        }       
+        }
+        alert("You're live");      
     });
 
     $("#offline").on("click", function () {
@@ -51,7 +52,7 @@ $(document).ready(function() {
             url: "/api/vendors",
             data: currentUser
         });
-       
+        alert("See you soon!")
     });
 
     function submitItem(newItem) {
