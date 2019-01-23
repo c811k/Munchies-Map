@@ -11,7 +11,7 @@ module.exports = function(app) {
       where: { 
         status: true
     },  
-      include: [db.Location]
+      include: [{model: db.Location}, {model: db.Item}]
     })
       .then(function(data) {
         res.json(data);

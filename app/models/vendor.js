@@ -44,6 +44,14 @@ module.exports = function (sequelize, DataTypes) {
                 name: "vendorId"
             }
         });
+
+        models.Vendor.hasMany(models.Item, {
+            foreignKey: {
+                onDelete: "CASCADE",
+                allowNull: false,
+                name: "vendorId"
+            }
+        })
     }
 
     return Vendor;

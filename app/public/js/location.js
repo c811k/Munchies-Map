@@ -1,7 +1,3 @@
-var searchVal;
-var map;
-var infowindow;
-
 $(document).ready(function () {
     $("#sidebarCollapse").on("click", function () {
         $("#sidebar").toggleClass("active");
@@ -29,6 +25,7 @@ $(document).ready(function () {
 
 var map;
 var marker;
+var infowindow;
 
 function initMap() {
     
@@ -102,7 +99,7 @@ function initMap() {
                         // description: data[i].desc,
                     });
 
-                    var infowindow = new google.maps.InfoWindow({
+                    infowindow = new google.maps.InfoWindow({
                         content: data[i].business_name
                     });
                     
@@ -140,7 +137,3 @@ function initMap() {
         
 }
 
-$("#search-button").on("click", function () {
-    searchVal = $("#search-box").val();
-    console.log(searchVal);
-})
