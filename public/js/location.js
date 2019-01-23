@@ -139,7 +139,7 @@ function initMap() {
         });
     } else {
         // Browser doesn't support Geolocation
-        handleLocationError(false, infoWindow, map.getCenter());
+        handleLocationError(false, infowindow, map.getCenter());
     }
 
     var contentString = '<div id="content">' +
