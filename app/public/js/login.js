@@ -2,7 +2,6 @@ $(document).ready(function() {
     var password = $("#password");
     var email = $("#email");
     
-
     $("#login").on("click", function (event) {
         event.preventDefault();
         
