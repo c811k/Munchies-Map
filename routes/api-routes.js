@@ -11,7 +11,7 @@ app.get("/api/vendors/", function(req, res) {
     where: { 
       status: true
   },  
-    include: [{model: db.Location}, {model: db.Item}]
+    include: [{model: db.Location, order: ['createdAt', 'DESC']}, {model: db.Item}]
   })
     .then(function(data) {
       res.json(data);
