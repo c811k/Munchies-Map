@@ -10,8 +10,9 @@ app.get("/api/vendors/", function(req, res) {
   db.Vendor.findAll({
     where: { 
       status: true
-  },  
-    include: [{model: db.Location, order: [db.Location, 'id', 'ASC']}, {model: db.Item}]
+  },
+    include: [{model: db.Location}, {model: db.Item}],
+    order: [[db.Location, "id", "DESC"]]
   })
     .then(function(data) {
       res.json(data);
