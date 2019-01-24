@@ -13,9 +13,9 @@ $(document).ready(function () {
                     lng: position.coords.longitude,
                     position: google.maps.ControlPosition.TOP_CENTER
                 };
-                infoWindow.setPosition(pos);
-                infoWindow.setContent('<h1>You are here</h1>');
-                infoWindow.open(map);
+                infowindow.setPosition(pos);
+                infowindow.setContent('<h1>You are here</h1>');
+                infowindow.open(map);
                 map.setCenter(pos);
             }
             );
@@ -23,9 +23,9 @@ $(document).ready(function () {
     })
 });
 
+var infowindow;
 var map;
 var marker;
-var infowindow;
 
 function initMap() {
     
