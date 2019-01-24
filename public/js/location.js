@@ -14,7 +14,7 @@ $(document).ready(function () {
                     position: google.maps.ControlPosition.TOP_CENTER
                 };
                 infowindow.setPosition(pos);
-                infowindow.setContent('<h1>You are here</h1>');
+                infowindow.setContent('<h4>You are here</h4>');
                 infowindow.open(map);
                 map.setCenter(pos);
             }
