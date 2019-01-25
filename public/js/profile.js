@@ -45,7 +45,7 @@ $(document).ready(function() {
         alert("You're live");      
     });
 
-    $("#offline").on("click", function () {
+    $("#offline").on("click", function() {
         currentUser.status = false;
         $.ajax({
             method: "PUT",
@@ -53,6 +53,15 @@ $(document).ready(function() {
             data: currentUser
         });
         alert("See you soon!")
+    });
+
+    $("#delete").on("click", function() {
+
+        $.ajax({
+            method: "DELETE",
+            url: "/api/vendors/" + currentUser.id,
+        });
+        alert("Thank you for doing business with us.");
     });
 
     function submitItem(newItem) {
