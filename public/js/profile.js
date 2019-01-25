@@ -15,7 +15,7 @@ $(document).ready(function() {
         var newItem = {
             name: itemName.val().trim(),
             price: itemPrice.val(),
-            vendorId: currentUser.id
+            VendorId: currentUser.id
         }
         submitItem(newItem);
     });
@@ -34,7 +34,7 @@ $(document).ready(function() {
                     var pos = {
                         latitude: position.coords.latitude,
                         longitude: position.coords.longitude,
-                        vendorId: currentUser.id
+                        VendorId: currentUser.id
                     };
     
                     console.log(pos);

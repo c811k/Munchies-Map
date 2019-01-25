@@ -11,12 +11,11 @@ module.exports = function(sequelize, DataTypes) {
     });
     
     Location.associate = function(models) {
-        models.Location.belongsTo(models.Vendor, {
+        Location.belongsTo(models.Vendor, {
             foreignKey: {
-                onDelete: "CASCADE",
-                allowNull: false,
-                name: "vendorId"
-            }
+                allowNull: false
+            },
+            onDelete: "CASCADE"
         });
     };
 
