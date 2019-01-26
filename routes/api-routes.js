@@ -35,7 +35,7 @@ app.get("/api/vendors/:search", function(req, res) {
 app.get("/api/menu/:id", function(req, res) {
  
      db.Item.findAll({
-        WHERE:{id: req.params.id}
+        WHERE:{VendorId: req.params.id}
      })
       .then(function(data) {
         res.json(data);
