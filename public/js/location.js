@@ -1,4 +1,10 @@
+var infowindow;
+var map;
+var marker;
+
+
 $(document).ready(function () {
+
     $("#sidebarCollapse").on("click", function () {
         $("#sidebar").toggleClass("active");
         $(this).toggleClass("active");
@@ -17,13 +23,11 @@ $(document).ready(function () {
                 infowindow.setContent('<h4>You are here</h4>');
                 infowindow.open(map);
                 map.setCenter(pos);
-            }
-            );
+            });
         }
-    })
+    });
 });
 
-var infowindow;
 var map;
 var marker;
 

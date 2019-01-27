@@ -96,12 +96,12 @@ $(document).ready(function() {
                 var header = $("<div>").addClass("card-header").text(data[i].name);
                 var body = $("<div>").addClass("card-body");
                 var title = $("<h5>")
-                    .addClass("card-title text-center")
+                    .addClass("card-title text-center mt-3")
                     .text("$" + data[i].price);
                 var button = $("<button>")
                     .addClass("btn btn-outline-success btn-sm border-0")
                     .text("REMOVE");
-                div.append(header, body, title, button);
+                div.append(header, title, button);
                 $("#displayMenu").append(div);
             }
         });   
