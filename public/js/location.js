@@ -1,10 +1,9 @@
-var infowindow;
+var infoWindow;
 var map;
 var marker;
 
-
 $(document).ready(function () {
-
+    
     $("#sidebarCollapse").on("click", function () {
         $("#sidebar").toggleClass("active");
         $(this).toggleClass("active");
@@ -17,19 +16,16 @@ $(document).ready(function () {
                 pos = {
                     lat: position.coords.latitude,
                     lng: position.coords.longitude,
-                    position: google.maps.ControlPosition.TOP_CENTER
                 };
-                infowindow.setPosition(pos);
-                infowindow.setContent('<h4>You are here</h4>');
-                infowindow.open(map);
+
+                infoWindow.setPosition(pos);
+                infoWindow.setContent('<h4>You are here</h4>');
+                infoWindow.open(map);
                 map.setCenter(pos);
             });
         }
     });
 });
-
-var map;
-var marker;
 
 function initMap() {
     
@@ -106,11 +102,11 @@ function initMap() {
                             // description: data[i].desc,
                         });
     
-                        infowindow = new google.maps.InfoWindow({
+                        infoWindow = new google.maps.infoWindow({
                             content: data[i].business_name
                         });                       
                         
-                        infowindow.open(map, marker);
+                        infoWindow.open(map, marker);
                     }
                 });
             });
@@ -130,20 +126,20 @@ function initMap() {
                         // description: data[i].desc,
                     });
 
-                    infowindow = new google.maps.InfoWindow({
+                    infoWindow = new google.maps.infoWindow({
                         content: data[i].business_name
                     });
                     
                     google.maps.event.addListener(marker, 'click', function () {
-                        infowindow.setContent(this.info);
-                        infowindow.open(map, this);
+                        infoWindow.setContent(this.info);
+                        infoWindow.open(map, this);
                     });
                 }
             });
         });
     } else {
         // Browser doesn't support Geolocation
-        handleLocationError(false, infowindow, map.getCenter());
+        handleLocationError(false, infoWindow, map.getCenter());
     }   
 }
 

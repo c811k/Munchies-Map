@@ -21,11 +21,11 @@
         <form class="navbar-form w-50" id="search-form">
             <div class="form-inline input-group">
                 <div class="input-group-prepend">
-                    <div class="input-group-prepend">
-                        <button id="search-button" class="btn btn-outline-success border border-right-0" type="button"><i class="fas fa-search"></i></button>
-                    </div>
+                    <button id="search-button" class="btn btn-outline-success border border-right-0 disabled" type="button"><i class="fas fa-search"></i></button>
                 </div>
-                <input class="form-control bg-light border border-right-0" type="text" placeholder="Search" id="search-box">
+                <input class="form-control bg-light border border-left-0 mr-2" type="text" placeholder="Search" id="search-box">
+                
+                <input class="form-control bg-light border border-right-0" type="text" placeholder="Los Angeles, CA" id="location-box">
                 <div class="input-group-append">
                     <button id="loc1" class="btn btn-outline-success border" type="button"><i class="fas fa-map-marker-alt"></i></button>
                 </div>
@@ -34,9 +34,9 @@
 
         <form class="form-inline" id="login-signup">
             <div class="input-group">
-                <a href="/contact" class="btn btn-outline-success border-0 my-2 mx-1 my-sm-0" role="button"><i class="fab fa-meetup"></i> CONTACT</a>
-                <a href="/login" class="btn btn-outline-success border-0 my-2 mx-1 my-sm-0" role="button"><i class="fas fa-user-tie"></i> LOG IN</a>
-                <a href="/signup" class="btn btn-outline-success border-0 my-2 mx-1 my-sm-0" role="button"><i class="fas fa-user-plus"></i> SIGN UP</a>
+                <a href="/contact" class="btn btn-outline-success border-0 my-2 mx-1 my-sm-0 rounded-0" role="button"><i class="fab fa-meetup"></i> CONTACT</a>
+                <a href="/login" class="btn btn-outline-success border-0 my-2 mx-1 my-sm-0 rounded-0" role="button"><i class="fas fa-user-tie"></i> LOG IN</a>
+                <a href="/signup" class="btn btn-outline-success border-0 my-2 mx-1 my-sm-0 rounded-0" role="button"><i class="fas fa-user-plus"></i> SIGN UP</a>
             </div>
         </form>
     </nav>
