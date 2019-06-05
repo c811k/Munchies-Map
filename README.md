@@ -18,7 +18,7 @@ https://munchiesmap.herokuapp.com
 
 # Primary Contributors
 
-Caleb Kang
-Irwin Gameros
-Ahmed Ben Othmen
-Trevor Samuelson
+* Caleb Kang
+* Irwin Gameros
+* Ahmed Ben Othmen
+* Trevor Samuelson
